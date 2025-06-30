@@ -13,7 +13,7 @@ import org.springframework.data.repository.CrudRepository;
 
 Interface : (Tipo de clase que define metodos, pero no como se implementan)
 Extends : Heredar (herencia)
-Clase Generica :
+Clase Generica : ejemplo <Producto, Long>
 
 */
 
