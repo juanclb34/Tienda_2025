@@ -74,6 +74,10 @@ public Optional <Producto> update(Long id, Producto producto){
 
 }
 
+    public List<Producto> buscarProductos(String nombre, String categoria, Double precioMin, Double precioMax) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
 
 
     

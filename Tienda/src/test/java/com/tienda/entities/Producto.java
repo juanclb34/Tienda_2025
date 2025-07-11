@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.tienda.entities;
 
 import jakarta.persistence.Entity;
@@ -13,31 +9,38 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
-/**
- *
- * @author Usuario
- */
-@Entity  /* Elementos como este se llama anotacion y esto es para agregar META DATOS son la descripcion de un dato */
-@Table(name = "productos")  /*Tablas plural, clase singular*/
+@Entity
+@Table(name = "productos")
 public class Producto {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)/* Id es un primaryKey, es autoincremental*/
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotBlank
+
+    @NotBlank(message = "El nombre es obligatorio")
     private String nombre;
-    @Min(value = 100, message = "El precio es obligatorio")
+
+    @Min(value = 100, message = "El precio debe ser al menos 100")
     @NotNull(message = "El precio no puede ser nulo")
     private Double precio;
-    
-    public Producto(){
-        // Constructor vacio necesario para JPA
-    }
-    
-    public Producto(String nombre, Double precio){
+
+    @NotBlank(message = "La categoría es obligatoria")
+    private String categoria;
+
+    @Min(value = 0, message = "El stock no puede ser negativo")
+    private int stock;
+
+    // Constructor vacío requerido por JPA
+    public Producto() {}
+
+    public Producto(String nombre, Double precio, String categoria, int stock) {
         this.nombre = nombre;
         this.precio = precio;
+        this.categoria = categoria;
+        this.stock = stock;
     }
+
+    // Getters y Setters
 
     public Long getId() {
         return id;
@@ -63,4 +66,19 @@ public class Producto {
         this.precio = precio;
     }
 
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
 }
